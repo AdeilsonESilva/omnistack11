@@ -88,7 +88,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n\t\"title\": \"Caso 1\",\n\t\"description\": \"Detalhes do caso\",\n\t\"value\": 120\n}",
+                  "raw": "{\n\t\"title\": \"Caso Teste\",\n\t\"description\": \"Detalhes do caso\",\n\t\"value\": 120.33\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -122,10 +122,10 @@
                   }
                 ],
                 "url": {
-                  "raw": "localhost:3333/incidents/1",
+                  "raw": "localhost:3333/incidents/5",
                   "host": ["localhost"],
                   "port": "3333",
-                  "path": ["incidents", "1"]
+                  "path": ["incidents", "5"]
                 }
               },
               "response": []
@@ -143,10 +143,16 @@
                   }
                 ],
                 "url": {
-                  "raw": "localhost:3333/incidents",
+                  "raw": "localhost:3333/incidents?page=2",
                   "host": ["localhost"],
                   "port": "3333",
-                  "path": ["incidents"]
+                  "path": ["incidents"],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "2"
+                    }
+                  ]
                 }
               },
               "response": []
