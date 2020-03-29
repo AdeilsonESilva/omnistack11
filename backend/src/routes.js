@@ -8,7 +8,15 @@ const SessionController = require("./controllers/SessionController");
 
 const routes = express.Router();
 
-routes.post("/sessions", SessionController.create);
+routes.post(
+  "/sessions",
+  celebrate({
+    [Segments.BODY]: Joi.object().keys({
+      id: Joi.string().required()
+    })
+  }),
+  SessionController.create
+);
 
 routes.get("/ongs", OngController.index);
 
@@ -53,7 +61,20 @@ routes.get(
   IncidentController.index
 );
 
-routes.post("/incidents", IncidentController.create);
+routes.post(
+  "/incidents",
+  celebrate({
+    [Segments.HEADERS]: Joi.object({
+      authorization: Joi.string().required()
+    }).unknown(),
+    [Segments.BODY]: Joi.object().keys({
+      title: Joi.string().required(),
+      description: Joi.string().required(),
+      value: Joi.number().required()
+    })
+  }),
+  IncidentController.create
+);
 
 routes.delete(
   "/incidents/:id",
